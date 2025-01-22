@@ -107,9 +107,9 @@ void DG_Init()
 
     XSetForeground(s_Display, s_Gc, whiteColor);
 
-    XkbSetDetectableAutoRepeat(s_Display, 1, 0);
+    //XkbSetDetectableAutoRepeat(s_Display, 1, 0);
 
-    // Wait for the MapNotify event
+    // Wait for the MapNotify event   ZMIENIONE NA XSETD ..... Bylo XkbSet !
 
     while(1)
     {
@@ -141,7 +141,7 @@ void DG_DrawFrame()
                 addKeyToQueue(1, sym);
             }
             else if (e.type == KeyRelease)
-            {
+            {  //tu bylo zmieniane na Xkb 
                 KeySym sym = XKeycodeToKeysym(s_Display, e.xkey.keycode, 0);
                 //printf("KeyRelease:%d sym:%d\n", e.xkey.keycode, sym);
                 addKeyToQueue(0, sym);
@@ -204,7 +204,7 @@ int main(int argc, char **argv)
 {
     doomgeneric_Create(argc, argv);
 
-    for (int i = 0; ; i++)
+    while(1)
     {
         doomgeneric_Tick();
     }
