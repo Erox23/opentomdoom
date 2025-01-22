@@ -35,5 +35,5 @@ int main(int argc, char **argv)
 ```
 
 ## X11 - OpenTom
-![Ubuntu](screenshots/tomtom.png)
+![OpenTom](screenshots/tomtom.png)
 
