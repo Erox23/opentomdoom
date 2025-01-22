@@ -9,11 +9,16 @@ To try it you will need:
 - WAD file (game data). [better first try to compile it]
   
 To compile you will need a working OpenTomSDK. If you are able to compile OpenTom and it's working on you device you will be able to compile and run Doom
-1. Put files from /doomgeneric to /home/<user>/build/applications/src/ ("build" is where you did the OpenTom compilation)
-2. I'm not sure if it's needed, but i do it =   sudo dpkg --add-architecture i386
-3. Change AUTOROOT in "get_cross_env.sh" to your OpenTom dest (/home/<user>/build for example) and then -> source get_cross_env.sh
-4. linux32 make
+1. Move source code from '/doomgeneric' to '/home/<user>/build/applications/src/' ("build" is where you did the OpenTom compilation)
+2. I'm not sure if it's needed, but i do it =  ' sudo dpkg --add-architecture i386' 
+3. Change 'AUTOROOT' in '"get_cross_env.sh"' to your OpenTom dest ('/home/<user>/build' for example) and then -> 'source get_cross_env.sh' 
+4. 'linux32 make' 
    And it should start to compile your OpenTomDoom ;)
+5. Move compiled files from '/build/tomtomdoom' to '/media/INTERNAL/opentom/bin/doom'
+6. Move 'doom' executable to '/opentom/bin/doom'
+7. Start Opentom Terminal and type the commands - 'cd bin/doom', './doom' and Doom should run
+
+   
 ### main loop (this line saved me)
 At start, call doomgeneric_Create().
 
