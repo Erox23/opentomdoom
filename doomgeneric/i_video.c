@@ -72,7 +72,7 @@ struct FB_ScreenInfo
 };
 
 static struct FB_ScreenInfo s_Fb;
-int fb_scaling = 1;
+int fb_scaling = 0;
 int usemouse = 0;
 
 
@@ -273,8 +273,8 @@ void I_FinishUpdate (void)
     /* 600 = s_Fb heigt, 200 screenheight */
     /* 600 = s_Fb heigt, 200 screenheight */
     /* 2048 =s_Fb width, 320 screenwidth */
-    y_offset     = (((s_Fb.yres - (SCREENHEIGHT * fb_scaling)) * s_Fb.bits_per_pixel/8)) / 2;
-    x_offset     = (((s_Fb.xres - (SCREENWIDTH  * fb_scaling)) * s_Fb.bits_per_pixel/8)) / 2; // XXX: siglent FB hack: /4 instead of /2, since it seems to handle the resolution in a funny way
+    y_offset     = (((s_Fb.yres - (SCREENHEIGHT * fb_scaling)) * s_Fb.bits_per_pixel/8)) / 4;
+    x_offset     = (((s_Fb.xres - (SCREENWIDTH  * fb_scaling)) * s_Fb.bits_per_pixel/8)) / 4; // XXX: siglent FB hack: /4 instead of /2, since it seems to handle the resolution in a funny way  THIS IS IMPORTANT 
     //x_offset     = 0;
     x_offset_end = ((s_Fb.xres - (SCREENWIDTH  * fb_scaling)) * s_Fb.bits_per_pixel/8) - x_offset;
 
@@ -303,8 +303,8 @@ void I_FinishUpdate (void)
                 }
             }
 #else
-            //cmap_to_rgb565((void*)line_out, (void*)line_in, SCREENWIDTH);
-            cmap_to_fb((void*)line_out, (void*)line_in, SCREENWIDTH);
+            cmap_to_rgb565((void*)line_out, (void*)line_in, SCREENWIDTH);
+            //cmap_to_fb((void*)line_out, (void*)line_in, SCREENWIDTH);
 #endif
             line_out += (SCREENWIDTH * fb_scaling * (s_Fb.bits_per_pixel/8)) + x_offset_end;
         }
